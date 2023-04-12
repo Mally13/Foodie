@@ -6,6 +6,10 @@ import StackScreens from './src/navigation/StackScreens';
 export default function App() {
   return (
     <NavigationContainer>
+        <StatusBar
+          backgroundColor="#00BFA9"
+          barStyle="light-content"
+        />
       <StackScreens/>
     </NavigationContainer>
   );
