@@ -78,14 +78,14 @@ const HeaderContent = () => {
       <View
         style={{
           backgroundColor: null,
-          height: 50,
+          height: 47,
           borderWidth: 0.5,
           borderColor: "white",
           marginTop: 20,
           flexDirection: "row",
           paddingHorizontal: 15,
           marginHorizontal: 15,
-          borderRadius: 12,
+          borderRadius: 16,
         }}
       >
         <View style={{ justifyContent: "center" }}>

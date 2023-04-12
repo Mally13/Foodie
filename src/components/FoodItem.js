@@ -1,9 +1,10 @@
-import { View, Image, Text } from "react-native";
+import { View, Image, Text, TouchableOpacity } from "react-native";
 import React from "react";
 
-const FoodItem = ({ FoodItem, marginLeft, marginRight }) => {
+const FoodItem = ({ FoodItem, marginLeft, marginRight, onPressItem, children }) => {
   return (
-    <View
+
+    <TouchableOpacity
       style={{
         backgroundColor: "white",
         marginTop: 20,
@@ -14,6 +15,7 @@ const FoodItem = ({ FoodItem, marginLeft, marginRight }) => {
         height: 250,
         width: 240,
       }}
+      onPress={onPressItem}
     >
       <View>
         <Image
@@ -43,13 +45,13 @@ const FoodItem = ({ FoodItem, marginLeft, marginRight }) => {
             />
           </View>
           <View style={{ justifyContent: "center" }}>
-            <Text style={{fontWeight: 'bold'}}>{FoodItem.rating}</Text>
+            <Text style={{fontWeight: '600'}}>{FoodItem.rating}</Text>
           </View>
         </View>
       </View>
 
       <View style={{ padding: 12 }}>
-        <Text numberOfLines={1} style={{ fontSize: 12, fontWeight: "700" }}>
+        <Text numberOfLines={1} style={{ fontSize: 16, fontWeight: "700" }}>
           {FoodItem.title}
         </Text>
         <Text
@@ -57,13 +59,13 @@ const FoodItem = ({ FoodItem, marginLeft, marginRight }) => {
             fontSize: 12,
             paddingTop: 8,
             fontWeight: "600",
-            color: "green",
+            color: "#00CFAB",
           }}
         >
           ${FoodItem.price.toFixed(2)}
         </Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 

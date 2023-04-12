@@ -13,12 +13,12 @@ const Section = ({ onPress, title, myStyle }) => {
       }}
     >
       <View style={{ flex: 1, justifyContent: "center" }}>
-        <Text style={{ fontSize: 18, fontWeight: "500", color: "black" }}>
+        <Text style={{ fontSize: 18, fontWeight: "700", color: "black" }}>
           {title}
         </Text>
       </View>
       <TouchableOpacity style={{ justifyContent: "center" }} onPress={onPress}>
-        <Text style={{ color: "green", fontSize: 14 }}>View All</Text>
+        <Text style={{ color: "#00CFAB", fontSize: 14 }}>View All</Text>
       </TouchableOpacity>
     </View>
   );
