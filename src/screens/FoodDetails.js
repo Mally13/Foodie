@@ -1,29 +1,34 @@
-import { View, Text, ImageBackground } from 'react-native'
+import { View, Text, Image, ImageBackground } from 'react-native'
 import React from 'react'
 import { useRoute } from "@react-navigation/native";
-import { recommended } from '../external_data/externalData';
+import FoodDetailsHeaderContent from '../components/FoodDetailsHeader';
+import FoodItemOrder from '../components/FoodItemOrder';
+
 
 const FoodDetails = (props) => {
   const route = useRoute();
-  console.log(route.params.foodItemDetails.image)
-  const { details} = route.params.foodItemDetails;
-  const { fullDetails } = recommended.filter(Item =>{
-    return Item.id === route.params.foodItemDetails;
-  })
-  console.log(fullDetails)
+  const details = route.params.foodItemDetails;
+  console.log(details)
 
   return (
-    <View  style={{ flex: 1, justifyContent: "center", alignItems: "center", color: 'black' }}>
-<Text>
-  {fullDetails.title}
-</Text>
-      {/* <ImageBackground
-        source={fullDetails.image}
-        resizeMode='cover'
-        style = {{ width: "100%", height: "300",backgroundColor:"#00B4A6"}}
-        >
-      </ImageBackground> */}
-
+    <View style={{
+      backgroundColor:'white',
+      height:'100%'
+    }}>
+      <View style={{
+        display:"flex",
+        paddingHorizontal:4,
+      }}>
+        <Image
+          source={details.image}
+          resizeMode="cover"
+          style={{height: 320, width: "100%",position:'relative', borderBottomLeftRadius: 26, borderBottomRightRadius: 26 }}
+        />
+        <FoodDetailsHeaderContent/>
+      </View>
+      <View>
+        <FoodItemOrder FoodItemOrder={details}/>
+      </View>
     </View>
   )
 }
