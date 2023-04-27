@@ -1,5 +1,6 @@
-import {View, Image, Text} from "react-native";
+import {View, Image, Text, Button} from "react-native";
 import { React,useState, useCallback } from "react";
+import CustomButton from "./customButton";
 
 const FoodItemOrder = ({FoodItemOrder, children,props}) => {
     const [textShown, setTextShown] = useState(false); //To show ur remaining Text
@@ -95,13 +96,14 @@ const FoodItemOrder = ({FoodItemOrder, children,props}) => {
                 </View>
 
             </View>
-            <View style={{marginTop:20, display:"flex", flexDirection:'column'}}>
-                <Text style={{ fontSize: 16, fontWeight: "700" , marginHorizontal:4}}>Description</Text>
-                <View >
+            <View style={{marginTop:20,paddingHorizontal:4, display:'flex', width: "100%", flexDirection:'column'}}>
+                <Text style={{ fontSize: 16, fontWeight: "700" }}>Description</Text>
+                <View style={{flexDirection: 'column'}} >
                     <Text 
                         onTextLayout={onTextLayout}
-                        numberOfLines={textShown ? undefined : 4}
-                        style={{marginTop:10, fontSize: 14, fontWeight:"500", color:'#8F8F8F', paddingHorizontal: 4, lineHeight: 30}}
+                        numberOfLines={textShown ? undefined : 3}
+                        ellipsizeMode= 'clip'
+                        style={{marginTop:10,fontSize: 16, textAlign:'justify', fontWeight:"500", color:'#8F8F8F', lineHeight: 32,}}
                     >
                         {FoodItemOrder.description} 
                     </Text>
@@ -109,12 +111,34 @@ const FoodItemOrder = ({FoodItemOrder, children,props}) => {
                         lengthMore ? 
                         <Text
                             onPress={toggleNumberOfLines}
-                            style={{color: '#00BFA9', fontWeight:'700', position:'absolute', bottom: -20, right: 8,  }}>
+                            style={{color: '#00BFA9', fontWeight:'700', position:'absolute',bottom: -20, right: 10,  }}>
                                 {textShown ? 'Read less...' : 'Read more...'}
                         </Text>
                         :null
                     }
 
+                </View>
+            </View>
+            <View style={{width:'100%', height:300, paddingHorizontal:4, marginTop:40,flexDirection:'column', justifyContent:'flex-start'}}>
+                <Image 
+                    source={require('../assets/images/map.jpeg')}
+                    style={{width: "100%", height:180, }}
+                />
+                <View style={{width:'102%',paddingHorizontal:16, flexDirection:'row',  position: 'absolute', top: 120, left: 0, right:0, justifyContent:'space-between'}}>
+                    <CustomButton 
+                        title="Chat"
+                        // onPress={handlePressChat}
+                        buttonColor="white"
+                        borderColor="#E17051"
+                        textColor="#E17051"
+                    />
+                    <CustomButton 
+                        title="Add Cart"
+                        // onPress={handlePressChat}
+                        buttonColor="#E17051"
+                        borderColor="#E17051"
+                        textColor="white"
+                    />
                 </View>
             </View>
 
