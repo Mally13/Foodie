@@ -1,9 +1,13 @@
-import { View, Text, Image, TextInput, Platform } from "react-native";
+import { View, Text, Image, TextInput, Platform, TouchableHighlight } from "react-native";
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 
 const FoodDetailsHeaderContent = () => {
-
+  const onNavigate = useNavigation();
+  const onNavigation = () => {
+    onNavigate.navigate("Cart");
+  };
   return (
     <View
       style={{
@@ -28,12 +32,15 @@ const FoodDetailsHeaderContent = () => {
             style={{ width: 25, height: 25, tintColor: "#000", backgroundColor:"white", padding:16, borderRadius:8 }}
           />
         </View>
-        <View style={{justifyContent: "center", padding:0 }}>
+        <TouchableHighlight
+          style={{justifyContent: "center", padding:0 }}
+          onPress = {() => onNavigation()}
+        >
           <Image
             source={require("../assets/icons/bagsm.png")}
             style={{ width: 20, height: 20,  tintColor: "#141414", backgroundColor:"white", padding:16, borderRadius:8  }}
           />
-        </View>
+        </TouchableHighlight>
       </View>
     </View>
   );

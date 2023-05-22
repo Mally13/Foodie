@@ -1,6 +1,7 @@
 import {View, Image, Text, Button} from "react-native";
-import { React,useState, useCallback } from "react";
+import { React,useState, useCallback, useContext } from "react";
 import CustomButton from "./customButton";
+import { CartContext } from "../contexts/CartContext";
 
 const FoodItemOrder = ({FoodItemOrder, children,props}) => {
     const [textShown, setTextShown] = useState(false); //To show ur remaining Text
@@ -12,6 +13,21 @@ const FoodItemOrder = ({FoodItemOrder, children,props}) => {
         setLengthMore(e.nativeEvent.lines.length >=4); //to check the text is more than 4 lines or not
         // console.log(e.nativeEvent);
     },[]);
+
+    const {addToCart} = useContext(CartContext);
+    const handleAddToCart = () => {
+        const FoodItem = {
+            id: FoodItemOrder.id,
+            title:FoodItemOrder.title,
+            price: FoodItemOrder.price,
+            image: FoodItemOrder.image,
+            quantity: 1,
+            restaurant: 'Nairobi',
+            total: FoodItemOrder.price  
+        }
+        console.log(FoodItem)
+        addToCart(FoodItem);
+    }
     return(
         
         <View
@@ -134,7 +150,7 @@ const FoodItemOrder = ({FoodItemOrder, children,props}) => {
                     />
                     <CustomButton 
                         title="Add Cart"
-                        // onPress={handlePressChat}
+                        onPress={handleAddToCart}
                         buttonColor="#E17051"
                         borderColor="#E17051"
                         textColor="white"
